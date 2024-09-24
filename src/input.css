@@ -1,0 +1,375 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+
+  .nav-link {
+    @apply text-gelap transition duration-300 ease-in-out;
+  }
+  
+  .nav-link.active {
+    @apply text-primary font-semibold dark:text-primary;
+  }
+}
+
+@layer utilities {
+    .horizontal-scroll {
+      width: 100%;
+      scrollbar-color: transparent transparent;
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 1rem;
+      scroll-padding: 1rem;
+      overflow-x: scroll
+    }
+
+    .container-gallery {
+        display: flex;
+        gap : 1.5rem;
+        width: max-content;
+        overflow-x: scroll;
+      }
+  
+    .item-gallery {
+      scroll-snap-align: center;
+      width: 250px;
+      aspect-ratio: 16/9;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid #000;
+      box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transform-origin: center;
+    }
+
+    .item-gallery:hover {
+        transform: scale(1.1);
+        z-index: 1; 
+        box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8);
+      }
+
+      .item-gallery img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        object-position: center;
+      }  
+  
+    .horizontal-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .item-gallery figcaption {
+        position: absolute;
+        bottom: -4rem;
+        background-color: rgba(0, 0, 0, 0.76);
+        padding: 1rem 0;
+        width: 100%;
+        text-align: center;
+        transition: all 200ms;
+      }
+    
+      .item-gallery:hover figcaption {
+        bottom: 0;
+      }
+
+      /* CSS Umum */
+      .content-box {
+        display: none; /* Sembunyikan semua konten secara default */
+      }
+
+      .content-box.active {
+        display: block; /* Tampilkan konten yang aktif */
+      }
+
+      .hidden {
+        display: none;
+      }
+
+
+      footer {
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        background-color: #010101;
+        text-align: left;
+        padding: 0 0 2rem;
+        top: 0; 
+        overflow: hidden;
+    }
+
+      .context-footer {
+        margin-top: 2rem;
+        margin-left: 3rem;
+        margin-right: 2rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 8rem;
+    }
+    
+    .list-footer ul li a {
+        display: flex;
+        align-items : center;
+        font-size: 0.9em;
+        line-height: 2.5;
+        color: #ffffff;
+        text-decoration: none;
+    }
+    
+    .list-footer  ul li a:hover {
+        color: #14b8a6;
+        text-decoration: underline;
+    }
+
+    .icon-footer {
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    
+    .social {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 3rem;
+        gap: 2rem;
+        padding: 1rem;
+    }
+    
+    .social a {
+        color: #fff;
+        margin: 1rem;
+        transition: color 0.5s ;
+    }
+    
+    .links {
+        text-align: center;
+        padding: 1rem;
+    }
+    
+    .links a {
+        margin-bottom: 1.2rem;
+        padding: 1rem;
+        color: #ffffff;
+        transition: color 0.5s;
+    }
+
+    .links a:hover,
+    .credit a:hover {
+      color : #14b8a6;
+    }
+    
+    .credit {
+        margin-top: 2rem;
+        color: #ffffff;
+        font-size: 1rem;
+        font-style: italic;
+        bottom: -20%;
+    }
+    
+    .credit a {
+        margin-top: 2rem;
+        font-weight: 600;
+        color: #ffffff;
+        transition: color 0.5s ease-in-out;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+      overflow-y: hidden;
+  }
+  
+  .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      position: relative;
+      overflow-x: hidden;
+      overflow: visible;
+      animation: animateModal 0.5s;
+  }
+  
+  @keyframes animateModal {
+      from {
+          top: -300px;
+          opacity: 0;
+      }
+      to {
+          top: 0;
+          opacity: 1;
+      }
+  }
+  
+  .modal-content-container {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row; 
+      gap: 20px; 
+  }
+  
+  .modal-content img {
+      margin: 0;
+      max-width: 50%;
+      height: auto;
+      object-fit: cover;
+  }
+  
+  .text-content-modal {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      margin: 0;
+      max-width: 68%;
+      line-height: 1.5;
+  }
+  
+  .header-modal {
+      font-size: 1.3em;
+      font-weight: bold;
+      margin-top: 0;
+      margin-bottom: 10px;
+  }
+  
+  .close {
+    position: absolute;
+    top: 10px; /* Jarak dari atas pada layar besar */
+    right: 10px; /* Jarak dari kanan pada layar besar */
+    font-size: 35px;
+    color: black;
+    cursor: pointer;
+  }
+  
+  .close:hover,
+  .close:focus {
+      color: #14b8a6;
+      text-decoration: none;
+  }
+
+  #home canvas{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+    @media (max-width: 768px) {
+      .context-footer {
+        display: flex;
+        position: relative;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+
+    .list-footer {
+        flex: 0 1 auto;
+        margin-right: 20px;
+    }
+
+    .list-footer:nth-child(1),
+    .list-footer:nth-child(2) {
+        order: 1;
+    }
+
+    .list-footer:nth-child(3),
+    .list-footer:nth-child(4) {
+        order: 2;
+    }
+
+    .list-footer .icon-footer {
+        height: 24px;
+    }
+  }
+
+  @media (max-width: 390px) {
+    .links {
+      height: 20px;
+      line-height: 2.5;
+      margin-bottom : 2.5rem;
+    }
+
+    .credit {
+      font-size: 0.8em;
+      bottom : 0;
+    }
+
+    .modal-content {
+      margin: 20% auto 20%;
+      padding-top: 10px;
+    }
+
+    .modal-content-container {
+      display: flex;
+      max-width: 100%;
+      flex-wrap: wrap;
+      flex-direction: column;
+      border-radius: 20px;
+    }
+    .modal-content img {
+      margin: 0;
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+    .text-content-modal {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      margin: 0;
+      max-width: 100%;
+      line-height: 1.5;
+    }
+
+    .close{
+      top: -10px; /* Tempatkan "close" di luar modal-content */
+      right:-25px; /* Geser "close" ke sebelah kanan modal-content-container */
+      font-size: 35px; /* Sesuaikan ukuran "close" */
+    }
+  }
+}
+
+html,
+body {
+    font-family: 'Inter', sans-serif;
+    scroll-behavior : smooth;
+}
+
+.navbar-fixed {
+    @apply fixed z-[9999] bg-white bg-opacity-70 backdrop-blur-sm dark:bg-gelap dark:bg-opacity-70;
+    box-shadow : inset 0 -1px 0 0 rgba(0,0,0,0.1);
+}
+
+.hamburger_line {
+    @apply w-[30px] h-[2px] my-2 block bg-gelap dark:bg-white;
+}
+
+.hamburger-active > span:nth-child(1) {
+    @apply rotate-45;
+}
+
+.hamburger-active > span:nth-child(2) {
+    @apply scale-0;
+}
+
+.hamburger-active > span:nth-child(3) {
+    @apply -rotate-45;
+}
+
+#dark-toggle:checked ~ label div.toggle-circle {
+  @apply translate-x-3;
+}
