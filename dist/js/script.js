@@ -181,7 +181,7 @@ let dataForm = () => {
 
     if (sisaKarakter === 0) {
       document.getElementById("sisaKarakter").innerText = "maksimal";
-    } else if (sisaKarakter <= 50) {
+    } else if (sisaKarakter <= 25) {
       document.getElementById("notifikasiSisaKarakter").style.color = "red";
     } else {
       document.getElementById("notifikasiSisaKarakter").style.color = "black";
